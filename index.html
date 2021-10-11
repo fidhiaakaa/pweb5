@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Belajar Form Validation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <style>
+      header {
+        margin: 0;
+        text-align: center;
+        background-color: #131557;
+        color: white;
+        padding: 10px;
+      }
+      .konten {
+        background-color: white;
+        padding: 30px;
+      }
+      footer {
+        background-color: #faf746;
+        padding: 10px;
+      }
+    </style>
+</head>
+<body background="https://images.unsplash.com/photo-1519452575417-564c1401ecc0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80">
+    <div class="container">
+      <header>
+        <h2>Form Pembelajaran Tatap Muka</h2>
+        <h4>Mahasiswa Teknik Informatika</h4>
+        <h6>Semester Gasal 2021/2022</h6>
+      </header>
+      <div class="konten">
+        <form name="formPendaftaran" onsubmit="return validateForm()" method="post">
+            <div class="form-group">
+                <label>Nama Lengkap</label>
+                <input type="text" name="nama" placeholder="Masukkan nama lengkap" class="form-control" required maxlength="40" minlength="3">
+            </div>
+            <div class="form-group">
+                <label>NRP</label>
+                <input type="text" name="nrp" placeholder="Nomor Registrasi Pokok" class="form-control">
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" name="email" placeholder="Email Aktif" class="form-control">
+              <small id="emailHelp" class="form-text text-muted">Email Akan Digunakan Untuk Mengirimkan Notifikasi.</small>
+          </div>
+          <div class="form-group">
+            <label>Alamat Domisili</label>
+            <input type="text" name="asal" placeholder="Nama Kota Domisili" class="form-control">
+          </div>
+          <div class="form-group">
+              <label>Status Vaksinasi</label>
+              <select name="status" class="form-control">
+                <option value="0">Pilih Status</option>
+                <option value="1">Dosis 1</option>
+                <option value="2">Dosis 2</option>
+                <option value="3">Belum Melakukan Vaksin</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+      <footer>
+        &copy; Institut Teknologi Sepuluh Nopember, 2021
+      </footer>
+    </div>
+    <script>
+      function validateForm() {
+            if (document.forms["formPendaftaran"]["nama"].value == "") {
+                alert("Nama Tidak Boleh Kosong");
+                document.forms["formPendaftaran"]["nama"].focus();
+                return false;
+            }
+            if (document.forms["formPendaftaran"]["nrp"].value == "") {
+                alert("NRP Tidak Boleh Kosong");
+                document.forms["formPendaftaran"]["nrp"].focus();
+                return false;
+            }
+            if (document.forms["formPendaftaran"]["email"].value == "") {
+                alert("Email Tidak Boleh Kosong");
+                document.forms["formPendaftaran"]["email"].focus();
+                return false;
+            }
+            if (document.forms["formPendaftaran"]["asal"].value == "") {
+                alert("Nama Kota Tidak Boleh Kosong");
+                document.forms["formPendaftaran"]["asal"].focus();
+                return false;
+            }
+            if (document.forms["formPendaftaran"]["status"].selectedIndex < 1) {
+                alert("Pilih Status.");
+                document.forms["formPendaftaran"]["status"].focus();
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
